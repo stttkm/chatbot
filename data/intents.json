@@ -1,0 +1,76 @@
+{
+  "intents": [
+    {
+      "tag": "greetings",
+      "patterns": [
+        "Hi", "Hey", "good morning", "good day", "hello", "How do you do?", "What's popping?"
+      ],
+      "responses": [
+        "Hi! Do you have any questions?", "Nice to see you :)",
+        "Hey, do you have any questions?", "Hello, do you have any questions?"
+      ]
+    },
+    {
+      "tag": "goodbyes",
+      "patterns": [
+        "Goodbye", "Bye", "See yeah ;)"
+      ],
+      "responses": [
+        "Bye! :)", "To the next time :)"
+      ]
+    },
+    {
+      "tag": "shop",
+      "patterns": [
+        "what are you selling?", "what products do you sell?", "products", "sell"
+      ],
+      "responses": [
+        "We mainly sell (stuff)"
+      ]
+    },
+    {
+      "tag": "hours",
+      "patterns": [
+        "when you guys open", "open hours", "hours", "when you are open", "open"
+      ],
+      "responses": [
+        "We are open 24/7"
+      ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": [
+        "you are making great products", "thanks for your products",
+        "best company ever", "you are so great"
+      ],
+      "responses": [
+        "Oh thank you! :)", "Thank you very much :)", "Thanks, I am really appreciate that :)"
+      ]
+    },
+    {
+      "tag": "discount",
+      "patterns": [
+        "is there any discount", "discount", "coupon",
+        "is there any coupons", "Can I ask for a discount code", "discount code"
+      ],
+      "responses": [
+        "We don't have any discount codes currently, \nbut you can sign up to our newsletter. \nThen we will notify you about any sales and discounts"
+      ]
+    },
+    {
+      "tag": "why_your_company",
+      "patterns": [
+        "What are your advantages over other companies?",
+        "What advantages do your products have over your competitors?",
+        "how will you impress me"
+      ],
+      "responses": [
+        "We are very good at (stuff)"
+      ]
+    },
+    {
+      "tag": "other",
+      "patterns": [],
+      "responses": ["Sorry, I don't understand you :( \nCan you write it another way? :("]
+    }
+  ]}
