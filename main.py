@@ -1,4 +1,3 @@
-import pprint
 from random import randint
 
 import numpy as np
@@ -24,22 +23,19 @@ def extract_data(data_frame):
     return patterns, responses
 
 
-def tokenize_data(patterns, responses):
-    tokenizer_ = Tokenizer(num_words=100)
-    tokenizer_.fit_on_texts(patterns[0])
+def tokenize_data(patterns):
+    tokenizer_ = Tokenizer(num_words=200)
     for i in range(len(patterns[1])):
         tokenizer_.fit_on_texts(patterns[1][i])
-        tokenizer_.fit_on_texts(responses[1][i])
     return tokenizer_, tokenizer_.word_index
 
-def tokenize_sequences(patterns, responses, tokenizer_):
+def tokenize_sequences(patterns, tokenizer_):
     for i in range(len(patterns[1])):
         patterns[1][i] = tokenizer_.texts_to_sequences(patterns[1][i])
-        responses[1][i] = tokenizer_.texts_to_sequences(responses[1][i])
-    return patterns, responses
+    return patterns
 
 
 df = open_json_and_make_df()
 X, y = extract_data(df)
-tokenizer, word_index = tokenize_data(X, y)
-X, y = tokenize_sequences(X, y, tokenizer)
+tokenizer, word_index = tokenize_data(X)
+X = tokenize_sequences(X, tokenizer)
