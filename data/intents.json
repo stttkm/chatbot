@@ -13,7 +13,7 @@
     {
       "tag": "goodbyes",
       "patterns": [
-        "Goodbye", "Bye", "See yeah ;)"
+        "Goodbye", "Bye", "See yeah", "See you later"
       ],
       "responses": [
         "Bye! :)", "To the next time :)"
