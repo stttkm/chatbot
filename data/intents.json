@@ -69,6 +69,28 @@
       ]
     },
     {
+      "tag": "delivery_time",
+      "patterns": [
+        "When do you send me the package?",
+        "When I get my product?",
+        "how many I will wait for the package"
+      ],
+      "responses": [
+        "We sell your package to you in two working days"
+      ]
+    },
+    {
+      "tag": "quality",
+      "patterns": [
+        "What is the quality of your products",
+        "what is the quality",
+        "quality of the products"
+      ],
+      "responses": [
+        "We are selling products of the highest quality."
+      ]
+    },
+    {
       "tag": "other",
       "patterns": [],
       "responses": ["Sorry, I don't understand you :( \nCan you write it another way? :("]
