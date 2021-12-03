@@ -6,7 +6,7 @@ import pandas as pd
 from tensorflow.keras import Sequential
 from tensorflow.keras.layers import Dense, Dropout, Activation
 from tensorflow.keras.optimizers import SGD
-from tensorflow.keras.preprocessing.text import Tokenizer
+from tensorflow.keras.preprocessing.text import Tokenizer, text_to_word_sequence
 
 import json
 
@@ -22,20 +22,31 @@ def extract_data(data_frame):
     responses = np.array([data_frame['tag'], data_frame['responses']])
     return patterns, responses
 
-
-def tokenize_data(patterns):
-    tokenizer_ = Tokenizer(num_words=200)
-    for i in range(len(patterns[1])):
-        tokenizer_.fit_on_texts(patterns[1][i])
+def tokenize_data(*args):
+    tokenizer_ = Tokenizer(num_words=200, filters='!"#$%&()*+,-./:;<=>?@[\\]^`{|}~\t\n')
+    for data in args:
+        tokenizer_.fit_on_texts(data)
     return tokenizer_, tokenizer_.word_index
 
-def tokenize_sequences(patterns, tokenizer_):
+
+def training_data(patterns):
+    tmp = []
+    num_of_words = [0]*len(patterns[1])
     for i in range(len(patterns[1])):
-        patterns[1][i] = tokenizer_.texts_to_sequences(patterns[1][i])
-    return patterns
+        tmp += list(patterns[1][i])
+        for el in patterns[1][i]:
+            num_of_words[i] += len(el.split())
+    X_ = text_to_word_sequence(' '.join(tmp))
+    y_ = []
+    for i in range(len(patterns[1])):
+        y_ += [patterns[0][i] for _ in range(num_of_words[i])]
+    assert len(X_) == len(y_)
+    return X_, y_
 
 
 df = open_json_and_make_df()
-X, y = extract_data(df)
-tokenizer, word_index = tokenize_data(X)
-X = tokenize_sequences(X, tokenizer)
+patterns, responses = extract_data(df)
+X, y = training_data(patterns)
+tokenizer, word_index = tokenize_data(X, y)
+X = tokenizer.texts_to_sequences(X)
+y = tokenizer.texts_to_sequences(y)
