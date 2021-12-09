@@ -1,0 +1,18 @@
+{
+  "1": {
+    "question": "What kinds of products do you sell?",
+    "hint": "We mainly sell books."
+  },
+  "2": {
+    "question": "When are your shops open?",
+    "hint": "We are open 24/7"
+  },
+  "3": {
+    "question": "Is on your site any coupons available?",
+    "hint": "We don't have any discount codes currently, \nbut you can sign up to our newsletter."
+  },
+  "4": {
+    "question": "How many time I will wait for the package?",
+    "hint": "We send your package to you in two working days."
+  }
+}
