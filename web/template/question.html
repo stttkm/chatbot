@@ -5,10 +5,11 @@
     <title>Create your own chatbot</title>
 </head>
 <body>
-  <form action="{{ url_for('form')}}" method="post">
+  <form action="{{ url_for('form', i=i)}}" method="post">
     <label for="question">{{question}}</label><br>
-    <input type="text" id="question" name="question" placeholder={{hint}}><br><br>
-    <button type="submit">{{next}}</button>
+    <input type="text" id="question" name="question">
+      <br><br>
+    <button type="submit">Next</button>
   </form>
 </body>
 </html>
