@@ -31,7 +31,7 @@
     {
       "tag": "hours",
       "patterns": [
-        "when you guys open", "open hours", "hours", "when you are open", "open"
+        "when you guys open", "open hours", "hours", "when are you open", "open"
       ],
       "responses": [
         "We are open 24/7"
@@ -76,7 +76,7 @@
         "how many I will wait for the package"
       ],
       "responses": [
-        "We sell your package to you in two working days"
+        "We send your package to you in two working days"
       ]
     },
     {
