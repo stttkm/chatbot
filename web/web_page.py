@@ -7,12 +7,23 @@ with open('questions.json') as file:
     questions = json.load(file)
 answers = []
 
-@app.route('/<i>', methods=["GET", "POST"])
+
+@app.route('/form/<i>', methods=["GET", "POST"])
 def form(i):
     if request.method == "POST":
         answers.append(request.form.get("question"))
-        return redirect(url_for(f'/{i+1}'))
-    return render_template("question.html", question=questions[f"question{i}"])
+        if questions[f'question{str(int(i)+1)}'] != "":
+            return redirect(url_for('form', i=str(int(i) + 1)))
+        else:
+            return redirect(url_for('success', chatbot_id='abcdef'))
+    else:
+        return render_template("question.html",
+                               question=questions[f'question{i}'])
+
+@app.route('/success/<chatbot_id>', methods=["GET"])
+def success(chatbot_id):
+    return render_template('success.html', chatbot_id=chatbot_id, answers=answers)
+
 
 app.run()
 print(answers)
