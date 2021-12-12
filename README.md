@@ -3,7 +3,7 @@
 - the kinds of products you sell
 - opening hours
 - discounts
-- advantages of the company (zalety firmy?)
+- advantages of the company
 - the quality of the products
 
 But there can be more - you can always add questions which your clients are interested in on the webpage, which will appear in the near future.
