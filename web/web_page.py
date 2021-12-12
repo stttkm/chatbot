@@ -8,6 +8,14 @@ with open('questions.json') as file:
 answers = []
 
 
+@app.route('/', methods=["GET", "POST"])
+@app.route('/home', methods=["GET", "POST"])
+@app.route('/start', methods=["GET", "POST"])
+def index():
+    if request.method == "POST":
+        return redirect(url_for('form', i=1))
+    else : return render_template('index.html')
+
 @app.route('/form/<i>', methods=["GET", "POST"])
 def form(i):
     if request.method == "POST":
@@ -26,4 +34,3 @@ def success(chatbot_id):
 
 
 app.run()
-print(answers)
