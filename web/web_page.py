@@ -6,6 +6,7 @@ app = Flask(__name__, template_folder='template')
 with open('questions.json') as file:
     questions = json.load(file)
 answers = []
+messages = []
 
 
 @app.route('/', methods=["GET", "POST"])
@@ -20,7 +21,7 @@ def index():
 def form(i):
     if request.method == "POST":
         answers.append(request.form.get("question"))
-        if questions[f'question{str(int(i)+1)}'] != "":
+        if questions[f'question{str(int(i)+1)}'] != " ":
             return redirect(url_for('form', i=str(int(i) + 1)))
         else:
             return redirect(url_for('success', chatbot_id='abcdef'))
@@ -31,6 +32,15 @@ def form(i):
 @app.route('/success/<chatbot_id>', methods=["GET"])
 def success(chatbot_id):
     return render_template('success.html', chatbot_id=chatbot_id, answers=answers)
+
+@app.route('/try_it_now/', methods=["GET", "POST"])
+def try_it_now():
+    if request.method == "POST":
+        message = request.form.get("new_message")
+        print(message, messages)
+        messages.append(message)
+        return render_template('try_it.html', messages=messages)
+    return render_template('try_it.html', messages=messages)
 
 
 app.run()
