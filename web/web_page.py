@@ -37,10 +37,13 @@ def success(chatbot_id):
 def try_it_now():
     if request.method == "POST":
         message = request.form.get("new_message")
-        print(message, messages)
         messages.append(message)
-        return render_template('try_it.html', messages=messages)
-    return render_template('try_it.html', messages=messages)
+        messages.append('user')
+        return render_template('try_it.html', messages=messages, len=len(messages))
+    return render_template('try_it.html', messages=messages, len=len(messages))
 
+@app.route('/add_new_question/', methods=["GET", "POST"])
+def add_new_question():
+    pass
 
 app.run()
