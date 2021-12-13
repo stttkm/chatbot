@@ -6,9 +6,9 @@
 </head>
 <body>
 {% import 'macros.html' as macros %}
-    <div id="conversation" style="height: 100px">
-        {% for message in messages %}
-            {{ macros.render_message(message) }}
+    <div id="conversation" style="height: 200px; width: 200px">
+        {% for i in range(0, len, 2) %}
+            {{ macros.render_message(messages[i], messages[i+1]) }}
         {% endfor %}
     </div>
     <form method="post">

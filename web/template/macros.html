@@ -1,3 +1,7 @@
-{% macro render_message(message) %}
-    <p>{{message}}</p>
+{% macro render_message(message, who) %}
+    {% if who == 'chatbot' %}
+        <div style="text-align: left"><p>{{message}}</p></div>
+    {% else %}
+        <div style="text-align: right"><p>{{message}}</p></div>
+    {% endif %}
 {% endmacro %}
